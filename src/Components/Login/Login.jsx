@@ -28,7 +28,7 @@ const Login = () => {
   
       if (data) {
         setLoginSuccess(true);
-        window.location.href = "/nextPage";
+        window.location.href = "/home";
       } else {
         setError("Credenciais inválidas");
       }
