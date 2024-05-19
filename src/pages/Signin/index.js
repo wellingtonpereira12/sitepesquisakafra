@@ -31,11 +31,11 @@ const Signin = () => {
 
   return (
     <C.Container>
-      <C.Label>SISTEMA DE LOGIN</C.Label>
+      <C.Label>Faça o login</C.Label>
       <C.Content>
         <Input
           type="email"
-          placeholder="Digite seu E-mail"
+          placeholder="Digite seu Nome"
           value={email}
           onChange={(e) => [setEmail(e.target.value), setError("")]}
         />
