@@ -3,23 +3,46 @@ import { FaUser, FaLock } from "react-icons/fa";
 import "./Login.css";
 
 const Login = () => {
-  // Estados para armazenar as entradas do usuário
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [loginSuccess, setLoginSuccess] = useState(false);
+  const [error, setError] = useState(null);
 
-  // Função que é chamada quando o formulário é enviado
-  const handleSubmit = (event) => {
-    // Impede que a página seja recarregada
+  const handleSubmit = async (event) => {
     event.preventDefault();
-
-    // Faz o console log das credenciais do usuário
-    console.log("Dados de Login:", { username, password });
+  
+    try {
+      console.log('Tentando fazer login com:', username, password); // Adicione esta linha para verificar os dados sendo enviados
+  
+      const response = await fetch("https://teste-api-5421.onrender.com/loginkafra", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ username, password })
+      });
+  
+      const data = await response.json();
+  
+      console.log('Resposta da API:', data); // Adicione esta linha para verificar a resposta da API
+  
+      if (data) {
+        setLoginSuccess(true);
+        window.location.href = "/nextPage";
+      } else {
+        setError("Credenciais inválidas");
+      }
+    } catch (error) {
+      console.error("Erro ao fazer login:", error);
+      setError("Erro ao fazer login. Por favor, tente novamente mais tarde.");
+    }
   };
+  
 
   return (
     <div className="container">
       <form onSubmit={handleSubmit}>
-        <h1>Faço o login</h1>
+        <h1>Faça o login</h1>
         <div className="input-field">
           <input
             type="text"
@@ -40,12 +63,8 @@ const Login = () => {
           />
           <FaLock className="icon" />
         </div>
-
-        <div className="recall-forget">
-        </div>
+        {error && <p className="error-message">{error}</p>}
         <button type="submit">Login</button>
-        <div className="signup-link">
-        </div>
       </form>
     </div>
   );
