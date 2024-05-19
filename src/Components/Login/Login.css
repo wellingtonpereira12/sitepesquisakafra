@@ -80,19 +80,3 @@
   font-weight: 700;
   text-shadow: none;
 }
-
-.container .signup-link {
-  font-size: 14.5px;
-  text-align: center;
-  margin: 20px 0 15px;
-}
-
-.signup-link p a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.signup-link p a:hover {
-  text-decoration: underline;
-}

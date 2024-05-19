@@ -19,11 +19,11 @@ const Login = () => {
   return (
     <div className="container">
       <form onSubmit={handleSubmit}>
-        <h1>Acesse o sistema</h1>
+        <h1>Faço o login</h1>
         <div className="input-field">
           <input
             type="text"
-            placeholder="E-mail"
+            placeholder="Nome"
             required
             value={username}
             onChange={(e) => setUsername(e.target.value)}
@@ -42,17 +42,9 @@ const Login = () => {
         </div>
 
         <div className="recall-forget">
-          <label>
-            <input type="checkbox" />
-            Lembre de mim
-          </label>
-          <a href="#">Esqueceu sua senha?</a>
         </div>
         <button type="submit">Login</button>
         <div className="signup-link">
-          <p>
-            Não tem uma conta? <a href="#">Registar</a>{" "}
-          </p>
         </div>
       </form>
     </div>
