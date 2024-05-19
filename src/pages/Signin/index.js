@@ -18,13 +18,19 @@ const Signin = () => {
     }
 
     try {
+      const userIp = await fetch("https://api.ipify.org?format=json")
+      .then(response => response.json())
+      .then(data => data.ip);      
 
+      console.log(userIp);
+      
       const response = await fetch("https://teste-api-5421.onrender.com/loginkafra", {
+
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ username, password: senha}), // Alterado de 'email' para 'username'
+        body: JSON.stringify({ username, password: senha, userIp}), // Alterado de 'email' para 'username'
       });
 
       if (!response.ok) {
